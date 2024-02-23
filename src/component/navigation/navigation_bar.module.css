@@ -14,14 +14,22 @@
 }
 
 .navigation_window {
-    position: fixed;
-    margin: 1rem;
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--primary);
     padding: 0.8rem 0.7rem;
 
     z-index: 999;
+}
+
+.fixed_navigation_window {
+    position: fixed;
+    margin: 1rem;
+}
+
+.compact_navigation_window {
+    display: none;
+    margin: 0 0 1rem 0;
 }
 
 .navigation_window .active {
@@ -50,4 +58,34 @@
 .active {
     color: var(--background);
     background-color: var(--primary);
+}
+
+pre {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Responsive - hide navigation bar at width 600px or height 600px */
+@media (max-width: 600px) {
+    .navigation_container {
+        display: none;
+    }
+
+    .compact_navigation_window {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-height: 600px) {
+    .navigation_container {
+        display: none;
+    }
+
+    .compact_navigation_window {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
 }

@@ -31,10 +31,19 @@ const navigation_entries: NavigationEntry[] = [
  * @param {NavigationEntry} entry - The navigation entry object
  * @return {MgNode} - The created navigation component
  */
-function navigation_entry_component(entry: NavigationEntry): MgNode {
+function navigation_entry_component(
+    entry: NavigationEntry,
+    compact: boolean
+): MgNode {
     const active: State<string[]> = state<string[]>([]);
     const link = mg.router_a(entry.url);
-    mg.code(entry.label).child_of(link);
+
+    if (!compact) {
+        mg.code(entry.label).child_of(link);
+    } else {
+        mg.code(entry.label.split(" ")[0]).child_of(link);
+    }
+
     link.bind_style(active);
 
     magnolia().router().on_router_load(path => {
@@ -51,7 +60,7 @@ function navigation_entry_component(entry: NavigationEntry): MgNode {
  */
 export function navigation_bar(): MgNode {
     const container: MgNode = mg.div().style(styles.navigation_container);
-    const window: MgNode = window_component().style(["no_select", styles.navigation_window]);
+    const window: MgNode = window_component().style(["no_select", styles.navigation_window, styles.fixed_navigation_window]);
     window.child_of(container);
 
     for (let index = 0; index < navigation_entries.length; index++) {
@@ -61,9 +70,21 @@ export function navigation_bar(): MgNode {
         }
 
         const entry: NavigationEntry = navigation_entries[index];
-        const link: MgNode = navigation_entry_component(entry);
+        const link: MgNode = navigation_entry_component(entry, false);
         link.child_of(window);
     }
 
     return container;
+}
+
+export function compact_navigation_bar(): MgNode {
+    const window: MgNode = window_component().style(["no_select", styles.navigation_window, styles.compact_navigation_window]);
+
+    for (let index = 0; index < navigation_entries.length; index++) {
+        const entry: NavigationEntry = navigation_entries[index];
+        const link: MgNode = navigation_entry_component(entry, true);
+        link.child_of(window);
+    }
+
+    return window;
 }

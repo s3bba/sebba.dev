@@ -55,3 +55,32 @@
 .sidebar div p {
     margin: 0;
 }
+
+/* responsive at width 1500px, 900px, 600px */
+@media (max-width: 1500px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        margin: 6rem auto;
+    }
+
+    .content {
+        margin: auto;
+        width: 80%;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 0;
+        width: 100dvw;
+    }
+
+    .content {
+        width: auto;
+    }
+}

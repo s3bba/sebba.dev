@@ -36,3 +36,22 @@
 .email_container p {
     margin: 0 0.6rem 0 0;
 }
+
+/* responsive at width 1500px, 900px, 600px */
+@media (max-width: 1500px) {
+
+}
+
+@media (max-width: 900px) {
+    .container {
+        margin: 6rem 2rem;
+        width: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 1rem;
+        width: auto;
+    }
+}

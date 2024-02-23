@@ -14,7 +14,7 @@ import {start_api_preload} from "./network/blog_api.ts";
 import blogs_view from "./view/blog/blogs_view.ts";
 import contact_view from "./view/contact/contact_view.ts";
 import fallback_view from "./view/fallback/fallback_view.ts";
-import {navigation_view} from "./view/navigation/navigation_view.ts";
+import {compact_navigation_view, navigation_view} from "./view/navigation/navigation_view.ts";
 import projects_view from "./view/projects/projects_view.ts";
 import root_view from "./view/root/root_view.ts";
 
@@ -40,7 +40,7 @@ magnolia.router().route("/projects", projects_view);
 magnolia.router().route_lazy("/blog/{slug}", blog_view);
 magnolia.router().fallback_to(fallback_view);
 
-magnolia.define_view_layout([navigation_view, magnolia.router()]);
+magnolia.define_view_layout([navigation_view, compact_navigation_view, magnolia.router()]);
 
 magnolia.init();
 

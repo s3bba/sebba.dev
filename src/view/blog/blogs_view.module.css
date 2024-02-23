@@ -60,3 +60,46 @@
 
 .metadata .tags {
 }
+
+/* responsive at width 1500px, 900px, 600px */
+@media (max-width: 1500px) {
+    .container {
+        margin: 6rem auto;
+        width: 70dvw;
+    }
+
+    .post_preview {
+        padding: 4rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        width: 85dvw;
+    }
+
+    .post_preview {
+        padding: 3rem;
+    }
+
+    .content_container {
+        width: auto;
+    }
+
+    .content {
+        margin: 0;
+        padding-left: 0;
+        width: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 0;
+        width: 100dvw;
+    }
+
+    .post_preview {
+        padding: 1rem;
+    }
+}

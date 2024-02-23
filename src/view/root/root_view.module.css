@@ -120,3 +120,25 @@
     font-weight: 600;
     color: var(--secondary);
 }
+
+/* responsive at width 1500px, 900px, 600px */
+@media (max-width: 1500px) {
+
+}
+
+@media (max-width: 900px) {
+    .container {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        margin: 6rem auto;
+        width: 80dvw;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 1rem auto;
+        width: 90dvw;
+    }
+}
