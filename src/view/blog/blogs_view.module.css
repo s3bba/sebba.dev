@@ -1,0 +1,60 @@
+/**
+ * Copyright (c) sebba.dev
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * license.md file in the root directory of this source tree.
+ */
+
+.container {
+    width: 100ch;
+    margin: 12rem auto;
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.post_preview {
+    padding: 8rem;
+    text-decoration: none;
+    color: var(--text);
+    border: none;
+}
+
+.post_preview:hover {
+    background-blend-mode: exclusion;
+    outline: var(--primary-500) solid 4px;
+}
+
+.content_container {
+    width: 50ch;
+    background-color: var(--background-transparent-75);
+    padding: 1rem;
+    border-radius: 0.4rem;
+    backdrop-filter: blur(0.4rem);
+    margin: auto;
+}
+
+.content {
+    padding-left: 0.4rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.title {
+    margin: 0;
+    font-weight: 300;
+    color: var(--primary-500);
+}
+
+.description {}
+
+.metadata {
+    display: flex;
+    justify-content: space-between;
+}
+
+.metadata .date {
+    /* move to the right */
+    margin-left: auto;
+}
+
+.metadata .tags {}

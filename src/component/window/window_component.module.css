@@ -1,0 +1,43 @@
+/**
+ * Copyright (c) sebba.dev
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * license.md file in the root directory of this source tree.
+ */
+
+.window {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--secondary-900);
+    border-radius: 0.4rem;
+    background-color: var(--accent-950);
+}
+
+.window_effect:hover {
+    background-color: var(--secondary-900);
+    cursor: pointer;
+}
+
+.loading_effect {
+    background-color: var(--background);
+
+    animation: 1s infinite alternate ease-out breathing-color;
+}
+
+@keyframes breathing-color {
+    from {
+        background-color: var(--background);
+    }
+    to {
+        background-color: var(--secondary);
+    }
+}
+
+.error_effect {
+    font-weight: 500;
+    color: #41061d;
+    border-color: #ff3b6b;
+    background-color: #ff3b6b;
+
+    text-align: center;
+}

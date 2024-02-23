@@ -1,0 +1,22 @@
+{
+  "name": "sebba.dev",
+  "description": "My own sandbox for experimenting with web technologies",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/tinycolor2": "^1.4.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "@vichava/magnolia": "0.0.1-develop.fe38da5f",
+    "@vichava/std": "0.0.0-feature-core-6-std-lib.aaf26dc2",
+    "tinycolor2": "^1.6.0"
+  }
+}

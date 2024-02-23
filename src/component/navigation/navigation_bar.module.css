@@ -1,0 +1,53 @@
+/**
+ * Copyright (c) sebba.dev
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * license.md file in the root directory of this source tree.
+ */
+
+.navigation_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 0;
+}
+
+.navigation_window {
+    position: fixed;
+    margin: 1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary);
+    padding: 0.8rem 0.7rem;
+
+    z-index: 999;
+}
+
+.navigation_window .active {
+    color: var(--background);
+    background-color: var(--primary);
+}
+
+.navigation_window a {
+    color: var(--primary);
+
+    padding: 0.2rem 0.4rem;
+    text-decoration: none;
+    border-radius: 0.2rem;
+}
+
+.navigation_window a:hover {
+    color: var(--text);
+    background-color: var(--secondary);
+
+}
+
+.navigation_window span {
+    padding: 0 0.4rem;
+}
+
+.active {
+    color: var(--background);
+    background-color: var(--primary);
+}

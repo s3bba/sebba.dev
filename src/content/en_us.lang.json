@@ -1,0 +1,114 @@
+{
+  "about": {
+    "greeting": "Hi, my name is",
+    "name": "Sebastijan Kelnerič",
+    "title": "Software developer based in Slovenia, Europe",
+    "content": [
+      "My specialty is infrastructure and backend development, I also have experience with game development with both client-side programming and the infrastructure that powers it.",
+      "At the moment I'm mostly working on creating my Git platform, it's in the very early stages of development, and the goal is to create a platform that fixes issues I have with exiting ones. More info about it will be available sometime in 2024.",
+      "This website is still a work in progress, it's mostly a playground for me to try out new things (like the experimental UI library that's rendering this page) and to host my blog. About the blog, it's mostly going to be about programming and game development, but sometimes I might write about other things in my life.",
+      "One more thing, I'm not a designer, so if you have any suggestions on how to improve the look and UX of this website, please let me know!"
+    ]
+  },
+  "contact": {
+    "email": "hello@sebba.dev",
+    "content": [
+      "Contact information",
+      "The best way to contact me is to send me an email, I try to respond as soon as possible. If you have any questions or want to discuss a project, feel free to reach out to me."
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "content": [
+      "Here are my currently active projects that I'm working on. I'm also planning to try open-sourcing some of my older projects, but that's still in the planning phase. If you want to know more about any of the projects, feel free to reach out to me."
+    ],
+    "items": [
+      {
+        "title": "Magnolia",
+        "description": [
+          "Experimental SPA UI library designed to be lightweight and fast.",
+          "Provided features include routing (normal && lazy), state management and view composition API.",
+          "It's still in the early stages of development, but it's already being used to render this website. So far my personal experience with it has been better than any other UI library/framework I've used before.",
+          "Currently all functionality is archived without external dependencies, this may change in the future, but the goal is to keep it as minimal as possible.",
+          "What makes Magnolia different from other UI libraries is that you write everything TypeScript (including CSS, but you can also do it the traditional way). This gives you a lot more control over the UI and while it's not as easy to use as other libraries, it's a lot more powerful, flexible and has pretty much zero magic included.",
+          "To expand on the 'no magic' point, this could be a good or a bad thing, depending on your perspective. But in the end it always comes down to the same thing, you have to write more code, but you have more control over it. And if you're a good developer, Magnolia will be a great tool for you.",
+          "Tech stack: TypeScript, Bun, Vite, HappyDOM"
+        ],
+        "links": [
+          {
+            "text": "Repository",
+            "url": "https://github.com/vichava/magnolia"
+          },
+          {
+            "text": "Basic example",
+            "url": "https://github.com/vichava/magnolia-example"
+          }
+        ]
+      },
+      {
+        "title": "Extrakt",
+        "description": [
+          "A Firefox extension that adds download buttons to various websites (YouTube and SoundCloud for now, more on the way)",
+          "Powered by my own backend API service, you'll need to have valid API key to use it, contact me if you want to try it out (You can also self host the API service).",
+          "Tech stack: TypeScript, WebExtensions API, Rust, Actix web, Docker, Helm, Kubernetes"
+        ],
+        "links": [
+          {
+            "text": "Extension repository",
+            "url": "https://github.com/s3bba/content-toolbox-extension"
+          },
+          {
+            "text": "API repository",
+            "url": "https://github.com/s3bba/content-toolbox-api"
+          }
+        ]
+      },
+      {
+        "title": "sebba.dev",
+        "description": [
+          "This website it's mostly a playground for me to try out new things and to host my blog.",
+          "Behind it is my API service that tracks user sessions and supplies blog posts, it's also built with my experimental Magnolia UI library to render the page. Blogs are managed with blog manager CLI tool",
+          "Tech stack: TypeScript, Magnolia, Bun, Rust, actix-web, clap, Docker, Helm, Kubernetes"
+        ],
+        "links": [
+          {
+            "text": "Frontend repository",
+            "url": "https://github.com/s3bba/sebba.dev"
+          },
+          {
+            "text": "API repository",
+            "url": "https://github.com/s3bba/api.sebba.dev"
+          },
+          {
+            "text": "Blog manager repository",
+            "url": "https://github.com/s3bba/blog-manager"
+          }
+        ]
+      },
+      {
+        "title": "Other things",
+        "description": [
+          "I have a lot of older projects that are not as \"interesting\" as the ones above bust still worth mentioning, and a ton of private projects that I'm not going to list here because they are mostly unmaintained or were rushed to get the job done for one specific thing and never touched again."
+        ],
+        "links": [
+          {
+            "text": "logw",
+            "url": "https://github.com/vichava/logw"
+          },
+          {
+            "text": "web-std",
+            "url": "https://github.com/vichava/web-std"
+          },
+          {
+            "text": "translate",
+            "url": "https://github.com/s3bba/translate"
+          },
+          {
+            "text": "Em's roots",
+            "url": "https://github.com/s3bba/gmtk-game-jam-2021"
+          }
+        ]
+      }
+    ]
+  }
+}

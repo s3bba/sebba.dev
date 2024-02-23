@@ -1,0 +1,38 @@
+/**
+ * Copyright (c) sebba.dev
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * license.md file in the root directory of this source tree.
+ */
+
+.container {
+    margin: 12rem auto;
+    width: 80ch;
+    padding: 1rem 2rem;
+}
+
+.copy {
+    background-color: var(--accent-400);
+    color: var(--background);
+    padding: 0.2rem 0.4rem;
+    border: none;
+    border-radius: 0.4rem;
+}
+
+.copy:hover {
+    background-color: var(--accent-600);
+    cursor: pointer;
+}
+
+.copied {
+    background-color: var(--primary-500);
+}
+
+.email_container {
+    display: flex;
+    align-items: center;
+}
+
+.email_container p {
+    margin: 0 0.6rem 0 0;
+}

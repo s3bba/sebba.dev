@@ -1,0 +1,40 @@
+/**
+ * Copyright (c) sebba.dev
+ *
+ * This source code is licensed under the GPLv3 license found in the
+ * license.md file in the root directory of this source tree.
+ */
+
+.container {
+    display: grid;
+    grid-gap: 1rem;
+    margin: 12rem auto;
+    width: 80ch;
+}
+
+.container h1 {
+    font-weight: 300;
+    color: var(--primary);
+}
+
+.items_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+
+.items_container h2 {
+    font-weight: 300;
+    color: var(--primary);
+}
+
+.links_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.links_container a {
+    color: var(--primary);
+    text-decoration: underline;
+    padding-top: 0.2rem;
+}
