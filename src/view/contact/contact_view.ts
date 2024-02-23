@@ -5,13 +5,12 @@
  * license.md file in the root directory of this source tree.
  */
 
-import styles from "./contact_view.module.css";
-
-import {View} from "@vichava/magnolia/ui/view";
-import {mg, MgDiv} from "@vichava/magnolia/ui/node_type";
 import {State, state} from "@vichava/magnolia/state";
+import {mg, MgDiv} from "@vichava/magnolia/ui/node_type";
+import {View} from "@vichava/magnolia/ui/view";
 import {window_component} from "../../component/window/window_component.ts";
 import {lang} from "../../content/static.ts";
+import styles from "./contact_view.module.css";
 
 /**
  * Creates the view for the contact page.

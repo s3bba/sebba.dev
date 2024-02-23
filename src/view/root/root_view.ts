@@ -5,16 +5,15 @@
  * license.md file in the root directory of this source tree.
  */
 
-import styles from "./root_view.module.css";
-
-import {View} from "@vichava/magnolia/ui/view";
-import {mg, MgAnchor, MgDiv, MgSpan} from "@vichava/magnolia/ui/node_type";
 import {MgNode} from "@vichava/magnolia/ui/node";
+import {mg, MgAnchor, MgDiv, MgSpan} from "@vichava/magnolia/ui/node_type";
+import {View} from "@vichava/magnolia/ui/view";
+import {next_theme_state, theme_state} from "../../component/theme/theme_manager.ts";
 import {window_component} from "../../component/window/window_component.ts";
+import {lang} from "../../content/static.ts";
 import {Shortcut} from "../../model/shortcut_model.ts";
 import {Theme, theme_map} from "../../model/theme_model.ts";
-import {next_theme_state, theme_state} from "../../component/theme/theme_manager.ts";
-import {lang} from "../../content/static.ts";
+import styles from "./root_view.module.css";
 
 
 /**

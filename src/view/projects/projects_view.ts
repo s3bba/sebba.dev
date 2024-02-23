@@ -5,12 +5,11 @@
  * license.md file in the root directory of this source tree.
  */
 
-import styles from "./projects_view.module.css";
-
-import {View} from "@vichava/magnolia/ui/view";
 import {mg, MgDiv} from "@vichava/magnolia/ui/node_type";
+import {View} from "@vichava/magnolia/ui/view";
 import {padded_window_component} from "../../component/window/window_component.ts";
 import {lang} from "../../content/static.ts";
+import styles from "./projects_view.module.css";
 
 type ProjectItemLink = {
     text: string,

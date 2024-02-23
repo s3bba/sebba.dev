@@ -5,9 +5,8 @@
  * license.md file in the root directory of this source tree.
  */
 
-import styles from "./window_component.module.css";
-
 import {mg, MgAnchor, MgDiv, MgRouterAnchor} from "@vichava/magnolia/ui/node_type";
+import styles from "./window_component.module.css";
 
 /**
  * Creates a window component with optional hover effect.

@@ -45,7 +45,8 @@
     color: var(--primary-500);
 }
 
-.description {}
+.description {
+}
 
 .metadata {
     display: flex;
@@ -57,4 +58,5 @@
     margin-left: auto;
 }
 
-.metadata .tags {}
+.metadata .tags {
+}
