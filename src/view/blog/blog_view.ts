@@ -15,7 +15,11 @@ import {ErrorType} from "../../model/response_model.ts";
 import {fetch_blog_post} from "../../network/blog_api.ts";
 import styles from "./blog_view.module.css";
 
-const blog_post_response_lock: OnceLock<Promise<Result<BlogPost, ErrorType>>> = once_lock();
+type LastLoaded = {
+    slug: string, post: Promise<Result<BlogPost, ErrorType>>
+}
+
+const blog_post_response_lock: OnceLock<LastLoaded> = once_lock();
 
 let heading_next_id = 0;
 /**
@@ -100,65 +104,127 @@ export default function blog_view(data: ViewData): View {
     loading.child_of(container);
     mg.p("Loading blog post...").child_of(loading);
 
+    if (blog_post_response_lock.value && blog_post_response_lock.value.slug !== slug) {
+        blog_post_response_lock.take();
+    }
+
     // TODO (sebba): This should be a component
-    blog_post_response_lock.get_or_init(async () => fetch_blog_post(slug))
-        .then(result => {
-            loading.unmount();
+    const blog_post_response = blog_post_response_lock.get_or_init(() => {
+        const post: Promise<Result<BlogPost, ErrorType>> = fetch_blog_post(slug);
 
-            if (result.err) {
-                const error = result.val;
+        return {
+            slug, post
+        }
+    });
 
-                if (error === ErrorType.NotFound) {
-                    const error = window_component();
-                    error.child_of(container);
-                    mg.p("Blog post not found :/").child_of(error);
-                    return;
-                }
+    blog_post_response.post.then(result => {
+        loading.unmount();
 
-                console.error(`Failed to fetch blog post with slug ${slug}`, result.err)
-                const error_window = error_window_component("Failed to fetch blog post :/");
-                error_window.child_of(container);
+        if (result.err) {
+            const error = result.val;
+
+            if (error === ErrorType.NotFound) {
+                const error = window_component();
+                error.child_of(container);
+                mg.p("Blog post not found :/").child_of(error);
                 return;
             }
 
-            const sidebar = window_component().style(styles.sidebar);
-            sidebar.child_of(container)
+            console.error(`Failed to fetch blog post with slug ${slug}`, result.err)
+            const error_window = error_window_component("Failed to fetch blog post :/");
+            error_window.child_of(container);
+            return;
+        }
 
-            const post = result.val;
-            const post_window = window_component().style(styles.content);
-            post_window.element().innerHTML = post.content;
+        const sidebar = window_component().style(styles.sidebar);
+        sidebar.child_of(container)
 
-            // All links should open in a new tab
-            for (const element of post_window.element().querySelectorAll('a')) {
-                element.target = "_blank";
+        const post = result.val;
+        const post_window = window_component().style(styles.content);
+        post_window.child_of(container);
+        post_window.element().innerHTML = post.content;
+
+        // All links should open in a new tab
+        for (const element of post_window.element().querySelectorAll('a')) {
+            element.target = "_blank";
+        }
+
+        // generate the sidebar content
+        mg.div().add_child(mg.h2("Contents")).child_of(sidebar);
+
+
+        for (const element of post_window.element().querySelectorAll('h2')) {
+            const text = element.textContent;
+
+            if (!text) {
+                continue;
             }
 
-            post_window.child_of(container);
-
-            // generate the sidebar content
-            for (const element of post_window.element().querySelectorAll('h1, h2')) {
-                const text = element.textContent;
-
-                if (!text) {
-                    continue;
-                }
-
-                const id = id_fn(text);
-                element.id = id;
+            const id = id_fn(text);
+            element.id = id;
 
 
-                const entry = mg.div();
-                entry.child_of(sidebar);
-                mg.p(text).child_of(entry)
+            const entry = mg.div();
+            entry.child_of(sidebar);
+            mg.p(text).child_of(entry)
 
-                entry.element().onclick = () => {
-                    scroll_into_view(element);
-                    window.history.replaceState(null, "", `#${id}`)
-                }
+            entry.on_click(() => {
+                scroll_into_view(element);
+                window.history.replaceState(null, "", `#${id}`)
+            });
+        }
+
+        for (const element of post_window.element().querySelectorAll('pre')) {
+            const copy_container = mg.div().style(styles.copy_container);
+            element.after(copy_container.element());
+            // What the fuck, this is cursed
+            copy_container.element().appendChild(element)
+
+            const button = mg.div().style(styles.copy_button);
+            button.child_of(copy_container);
+            mg.code("copy").child_of(button);
+
+            button.on_click(() => {
+                let copy_content: string = element.textContent || "";
+
+                navigator.clipboard.writeText(copy_content).then(() => {
+                    button.unmount_children();
+                    mg.code("copied").child_of(button);
+                })
+            });
+
+            if (element.children.length <= 2) {
+                continue;
             }
 
-            scroll_on_load();
-        });
+            const eval_element: Element | null = element.children.item(0);
+
+            if (!eval_element) {
+                continue;
+            }
+
+            const needs_eval = eval_element.textContent;
+
+            if (!needs_eval || !needs_eval.startsWith("//$ eval")) {
+                continue;
+            }
+
+            let code = "";
+            for (let i = 1; i < element.children.length; i++) {
+                code += element.children.item(i)?.textContent;
+            }
+
+            try {
+                eval(code);
+            } catch (e) {
+                console.error(`Failed to execute script`, code, e)
+            }
+
+            element.style.display = "none";
+        }
+
+        scroll_on_load();
+    });
 
     return view.add_child(container);
 }

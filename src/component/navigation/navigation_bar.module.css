@@ -60,11 +60,6 @@
     background-color: var(--primary);
 }
 
-pre {
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
 /* Responsive - hide navigation bar at width 600px or height 600px */
 @media (max-width: 600px) {
     .navigation_container {
