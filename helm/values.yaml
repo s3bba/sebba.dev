@@ -1,0 +1,11 @@
+name: "sebba-dev-web"
+
+image:
+  repository: rg.fr-par.scw.cloud/vichava-alpha/sebba-dev-web:0.0.0-develop.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  containerPort: 80
+  servicePort: 80
+  domain: sebba.dev
